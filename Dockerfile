@@ -3,11 +3,11 @@ FROM centos:centos7.6.1810
 MAINTAINER Vitaliy Skvortcov <vitaliyskvortcov@gmail.com>
 
 RUN yum -y install wget autoconf automake make gcc-c++ libecap libecap-devel openssl openssl-devel openldap-devel pam-devel quota-devel libdb-devel libxml2-devel \
-&& wget -P /opt/ http://www.squid-cache.org/Versions/v4/squid-4.4.tar.gz \
-&& tar xfv /opt/squid-4.4.tar.gz -C /opt/ \
+&& wget -P /opt/ http://www.squid-cache.org/Versions/v4/squid-4.17.tar.gz \
+&& tar xfv /opt/squid-4.17.tar.gz -C /opt/ \
 && sed -i 's/.*debugs(28, DBG_IMPORTANT, "WARNING: " \x3C\x3C name \x3C\x3C " ACL is used in " \x3C\x3C.*/\x20\x20\x20\x20\x20\x20\x20\x20debugs(28, 5, "checking " \x3C\x3C name \x3C\x3C " ACL is used in " \x3C\x3C/g' /opt/squid-4.4/src/acl/Acl.cc \
 && sed -i 's/.*debugs(28, DBG_IMPORTANT, "WARNING: " \x3C\x3C name \x3C\x3C " ACL is used in " \x3C\x3C.*/\x20\x20\x20\x20\x20\x20\x20\x20debugs(28, 5, "checking " \x3C\x3C name \x3C\x3C " ACL is used in " \x3C\x3C/g' /opt/squid-4.4/src/acl/ConnectionsEncrypted.cc \
-&& cd /opt/squid-4.4/ \
+&& cd /opt/squid-4.17/ \
 && ./configure \
 --build=x86_64-redhat-linux-gnu \
 --host=x86_64-redhat-linux-gnu \
